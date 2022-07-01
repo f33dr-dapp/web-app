@@ -29,12 +29,12 @@ export function useLikesFunction(
 
 export type LikesMethodNames = ContractMethodNames<Likes>
 export type LikesParams = Params<Likes, LikesMethodNames>
-export function useLikesCall(method: LikesMethodNames, args?: LikesParams) {
+export function useLikesCall(method: LikesMethodNames, args: LikesParams) {
   return (
     (useCall({
       contract: ContractInstance,
       method,
-      args: args || [],
+      args,
     }) as CallResult<Likes, typeof method>) ?? {
       value: undefined,
       error: undefined,

@@ -31,13 +31,13 @@ export type ProfileMethodNames = ContractMethodNames<Profile>
 export type ProfileParams = Params<Profile, ProfileMethodNames>
 export function useProfileCall(
   method: ProfileMethodNames,
-  args?: ProfileParams,
+  args: ProfileParams,
 ) {
   return (
     (useCall({
       contract: ContractInstance,
       method,
-      args: args || [],
+      args,
     }) as CallResult<Profile, typeof method>) ?? {
       value: undefined,
       error: undefined,

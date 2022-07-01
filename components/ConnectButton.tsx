@@ -7,20 +7,19 @@ import {
   MenuList,
 } from '@chakra-ui/react'
 import { useEthers } from '@usedapp/core'
-import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
+import WalletConnectProvider from '@walletconnect/web3-provider'
 
 import { READ_ONLY_URLS } from '../config/dappConfig'
-
-export const walletconnect = new WalletConnectConnector({
-  rpc: READ_ONLY_URLS,
-  qrcode: true,
-})
 
 export default function ConnectButton() {
   const { activate, activateBrowserWallet } = useEthers()
 
   const connectToWalletConnect = async () => {
-    await activate(walletconnect)
+    const provider = new WalletConnectProvider({
+      rpc: READ_ONLY_URLS,
+    })
+    await provider.enable()
+    await activate(provider)
   }
 
   return (
