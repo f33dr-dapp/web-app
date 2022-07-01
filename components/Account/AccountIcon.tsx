@@ -4,7 +4,7 @@ import { Box, Image } from '@chakra-ui/react'
 import styled from '@emotion/styled'
 import Jazzicon from '@metamask/jazzicon'
 
-import useProfileValue from '../hooks/useProfileValue'
+import useProfileValue from '../../hooks/useProfileValue'
 
 const StyledIdenticon = styled.div<{ size: number }>`
   height: ${(props) => props.size}px;

@@ -1,8 +1,8 @@
 import { Skeleton } from '@chakra-ui/react'
 import { useLookupAddress } from '@usedapp/core'
 
-import useProfileValue from '../hooks/useProfileValue'
-import truncateAddress from '../utils/truncateAddress'
+import useProfileValue from '../../hooks/useProfileValue'
+import truncateAddress from '../../utils/truncateAddress'
 
 function ENS({ account }: { account: string }) {
   const { ens, isLoading } = useLookupAddress(account)

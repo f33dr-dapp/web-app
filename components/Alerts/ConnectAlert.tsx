@@ -1,7 +1,7 @@
 import { Box } from '@chakra-ui/react'
 
+import ConnectButton from '../Account/ConnectButton'
 import AlertContainer from './AlertContainer'
-import ConnectButton from './ConnectButton'
 
 export default function ConnectAlert() {
   return (

@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+
 import {
   Box,
   Button,
@@ -9,10 +11,17 @@ import {
 import { useEthers } from '@usedapp/core'
 import WalletConnectProvider from '@walletconnect/web3-provider'
 
-import { READ_ONLY_URLS } from '../config/dappConfig'
+import { READ_ONLY_URLS } from '../../config/dappConfig'
 
 export default function ConnectButton() {
   const { activate, activateBrowserWallet } = useEthers()
+
+  useEffect(() => {
+    const walletConnect = localStorage.getItem('walletconnect')
+    if (walletConnect) {
+      connectToWalletConnect()
+    }
+  }, [])
 
   const connectToWalletConnect = async () => {
     const provider = new WalletConnectProvider({

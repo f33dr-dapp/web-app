@@ -9,8 +9,8 @@ import {
 } from '../../hooks/contracts/useMinter'
 import { useTokenCall } from '../../hooks/contracts/useToken'
 import useIsTransactionLoading from '../../hooks/useIsTransactionLoading'
-import AccountIcon from '../AccountIcon'
-import AccountName from '../AccountName'
+import AccountIcon from '../Account/AccountIcon'
+import AccountName from '../Account/AccountName'
 import SubmitButton from '../Form/SubmitButton'
 import TextArea from '../Form/TextArea'
 

@@ -1,7 +1,7 @@
 import { Container } from '@chakra-ui/react'
 import { useEthers } from '@usedapp/core'
 
-import ConnectAlert from '../components/ConnectAlert'
+import ConnectAlert from '../components/Alerts/ConnectAlert'
 import ProfileForm from '../components/Profile/ProfileForm'
 
 export default function Index() {

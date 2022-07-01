@@ -3,7 +3,7 @@ import { DAppProvider } from '@usedapp/core'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
-import Layout from '../components/Layout'
+import Layout from '../components/Layout/Layout'
 import dappConfig from '../config/dappConfig'
 import theme from '../config/theme'
 

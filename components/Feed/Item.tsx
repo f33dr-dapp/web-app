@@ -3,9 +3,9 @@ import { BigNumber } from 'ethers'
 import moment from 'moment'
 
 import { useItemCall } from '../../hooks/contracts/useItem'
-import AccountIcon from '../AccountIcon'
-import AccountName from '../AccountName'
-import AlertContainer from '../AlertContainer'
+import AccountIcon from '../Account/AccountIcon'
+import AccountName from '../Account/AccountName'
+import AlertContainer from '../Alerts/AlertContainer'
 import FeedLike from './Like'
 import FeedRepost from './Repost'
 

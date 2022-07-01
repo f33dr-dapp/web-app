@@ -4,8 +4,8 @@ import { Box, Button } from '@chakra-ui/react'
 import { BigNumber } from 'ethers'
 
 import { useItemCall } from '../../hooks/contracts/useItem'
-import AlertContainer from '../AlertContainer'
-import Loader from '../Loader'
+import AlertContainer from '../Alerts/AlertContainer'
+import Loader from '../Layout/Loader'
 import FeedItem from './Item'
 
 const PAGE_SIZE = 10

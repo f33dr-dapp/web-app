@@ -2,7 +2,7 @@ import { Skeleton } from '@chakra-ui/react'
 import { BigNumber } from 'ethers'
 import { formatUnits } from 'ethers/lib/utils'
 
-import { useTokenCall } from '../hooks/contracts/useToken'
+import { useTokenCall } from '../../hooks/contracts/useToken'
 
 export default function F33DBalance({ account }: { account: string }) {
   const { value: balanceValue, error: balanceError } = useTokenCall(

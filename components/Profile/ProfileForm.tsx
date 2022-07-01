@@ -10,7 +10,7 @@ import {
 import { useTokenCall } from '../../hooks/contracts/useToken'
 import useIsTransactionLoading from '../../hooks/useIsTransactionLoading'
 import useProfileValue from '../../hooks/useProfileValue'
-import AlertContainer from '../AlertContainer'
+import AlertContainer from '../Alerts/AlertContainer'
 import SubmitButton from '../Form/SubmitButton'
 import TextArea from '../Form/TextArea'
 import TextField from '../Form/TextField'

@@ -2,8 +2,8 @@ import { Heading, HStack } from '@chakra-ui/react'
 import { useEthers } from '@usedapp/core'
 import Link from 'next/link'
 
-import AccountMenu from './AccountMenu'
-import ConnectButton from './ConnectButton'
+import AccountMenu from '../Account/AccountMenu'
+import ConnectButton from '../Account/ConnectButton'
 import Logo from './Logo'
 
 export default function Header() {

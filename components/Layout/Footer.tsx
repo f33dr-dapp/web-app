@@ -1,7 +1,7 @@
 import { Badge, HStack } from '@chakra-ui/react'
 import { useEthers } from '@usedapp/core'
 
-import config from '../config/dappConfig'
+import config from '../../config/dappConfig'
 import { ColorModeSwitcher } from './ColorModeSwitcher'
 
 export default function Footer() {
