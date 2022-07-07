@@ -1,3 +1,11 @@
 {
-  "AddressBook": "0x87822E841C005aFFB64390c7b61b6Ac3793bEABa"
+  "AddressBook": "0x87822E841C005aFFB64390c7b61b6Ac3793bEABa",
+  "contracts": {
+    "Token": true,
+    "Item": true,
+    "Likes": true,
+    "Minter": true,
+    "AddressBook": true,
+    "Profile": true
+  }
 }

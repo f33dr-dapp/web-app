@@ -13,14 +13,13 @@ import NetworkAlert from '../components/Alerts/NetworkAlert'
 import Loader from '../components/Layout/Loader'
 import dappConfig from '../config/dappConfig'
 import { AddressBook, AddressBook__factory } from '../contracts'
-import CONTRACTS from './contracts.json'
 import MANIFEST from './manifest.json'
 
 const ADDRESS_BOOK = MANIFEST.AddressBook
 const Interface = new utils.Interface(AddressBook__factory.abi)
 const AddressBookContract = new Contract(ADDRESS_BOOK, Interface) as AddressBook
 
-export type ContractTypes = keyof typeof CONTRACTS
+export type ContractTypes = keyof typeof MANIFEST.contracts
 export type ContractNames = Record<ContractTypes, string>
 
 type ContextType = Web3Ethers & {

@@ -51,7 +51,7 @@ export function use{{CONTRACT}}Call(method: {{CONTRACT}}MethodNames, args: {{CON
 const fs = require('fs')
 const path = require('path')
 
-const manifest = require('../context/contracts.json')
+const manifest = require('../context/manifest.json')
 
 const hooksPath = path.join(__dirname.replace('scripts', ''), 'hooks/contracts')
 
@@ -83,7 +83,7 @@ function generateHooks() {
   checkDir(hooksPath)
   fs.rmdirSync(hooksPath, { recursive: true })
   checkDir(hooksPath)
-  Object.keys(manifest).forEach((contract) => {
+  Object.keys(manifest.contracts).forEach((contract) => {
     generateHook(contract)
   })
 }
