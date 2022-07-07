@@ -4,23 +4,21 @@ import {
   ContractMethodNames,
   Params,
 } from '@usedapp/core/dist/esm/src/model/types'
-import { Contract, utils } from 'ethers'
+import { utils } from 'ethers'
 
+import { useContract } from '../../context/DAppProvider'
 import { AddressBook, AddressBook__factory } from '../../contracts'
-import manifest from '../../contracts/manifest.json'
 import useTransactionNotification from '../useTransactionNotification'
 
 const Interface = new utils.Interface(AddressBook__factory.abi)
-const ContractInstance = new Contract(
-  manifest.AddressBook,
-  Interface,
-) as AddressBook
 
 export type AddressBookFunctions = ContractFunctionNames<AddressBook>
 export function useAddressBookFunction(
   name: AddressBookFunctions,
   notificationTitle?: string,
 ) {
+  const ContractInstance = useContract<AddressBook>('AddressBook', Interface)
+
   const transaction = useContractFunction(ContractInstance, name, {
     transactionName: name,
   })
@@ -34,13 +32,15 @@ export type AddressBookMethodNames = ContractMethodNames<AddressBook>
 export type AddressBookParams = Params<AddressBook, AddressBookMethodNames>
 export function useAddressBookCall(
   method: AddressBookMethodNames,
-  args?: AddressBookParams,
+  args: AddressBookParams = [],
 ) {
+  const ContractInstance = useContract<AddressBook>('AddressBook', Interface)
+
   return (
     (useCall({
       contract: ContractInstance,
       method,
-      args: args || [],
+      args,
     }) as CallResult<AddressBook, typeof method>) ?? {
       value: undefined,
       error: undefined,

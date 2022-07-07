@@ -5,20 +5,21 @@ import {
   ContractMethodNames,
   Params,
 } from '@usedapp/core/dist/esm/src/model/types'
-import { Contract, utils } from 'ethers'
+import { utils } from 'ethers'
 
+import { useContract } from '../../context/DAppProvider'
 import { {{CONTRACT}}, {{CONTRACT}}__factory } from '../../contracts'
-import manifest from '../../contracts/manifest.json'
 import useTransactionNotification from '../useTransactionNotification'
 
 const Interface = new utils.Interface({{CONTRACT}}__factory.abi)
-const ContractInstance = new Contract(manifest.{{CONTRACT}}, Interface) as {{CONTRACT}}
 
 export type {{CONTRACT}}Functions = ContractFunctionNames<{{CONTRACT}}>
 export function use{{CONTRACT}}Function(
   name: {{CONTRACT}}Functions,
   notificationTitle?: string,
 ) {
+  const ContractInstance = useContract<{{CONTRACT}}>('{{CONTRACT}}', Interface)
+
   const transaction = useContractFunction(ContractInstance, name, {
     transactionName: name,
   })
@@ -30,15 +31,14 @@ export function use{{CONTRACT}}Function(
 
 export type {{CONTRACT}}MethodNames = ContractMethodNames<{{CONTRACT}}>
 export type {{CONTRACT}}Params = Params<{{CONTRACT}}, {{CONTRACT}}MethodNames>
-export function use{{CONTRACT}}Call(
-  method: {{CONTRACT}}MethodNames,
-  args?: {{CONTRACT}}Params,
-) {
+export function use{{CONTRACT}}Call(method: {{CONTRACT}}MethodNames, args: {{CONTRACT}}Params = []) {
+  const ContractInstance = useContract<{{CONTRACT}}>('{{CONTRACT}}', Interface)
+
   return (
     (useCall({
       contract: ContractInstance,
       method,
-      args: args || [],
+      args,
     }) as CallResult<{{CONTRACT}}, typeof method>) ?? {
       value: undefined,
       error: undefined,
@@ -51,7 +51,7 @@ export function use{{CONTRACT}}Call(
 const fs = require('fs')
 const path = require('path')
 
-const manifest = require('../contracts/manifest.json')
+const manifest = require('../context/contracts.json')
 
 const hooksPath = path.join(__dirname.replace('scripts', ''), 'hooks/contracts')
 

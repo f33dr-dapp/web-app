@@ -1,11 +1,10 @@
 import { ChakraProvider } from '@chakra-ui/react'
-import { DAppProvider } from '@usedapp/core'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 
 import Layout from '../components/Layout/Layout'
-import dappConfig from '../config/dappConfig'
 import theme from '../config/theme'
+import DAppProvider from '../context/DAppProvider'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -21,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <meta name="author" content="F33Dr" />
       </Head>
-      <DAppProvider config={dappConfig}>
+      <DAppProvider>
         <Layout>
           <Component {...pageProps} />
         </Layout>

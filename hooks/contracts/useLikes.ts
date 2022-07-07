@@ -4,20 +4,21 @@ import {
   ContractMethodNames,
   Params,
 } from '@usedapp/core/dist/esm/src/model/types'
-import { Contract, utils } from 'ethers'
+import { utils } from 'ethers'
 
+import { useContract } from '../../context/DAppProvider'
 import { Likes, Likes__factory } from '../../contracts'
-import manifest from '../../contracts/manifest.json'
 import useTransactionNotification from '../useTransactionNotification'
 
 const Interface = new utils.Interface(Likes__factory.abi)
-const ContractInstance = new Contract(manifest.Likes, Interface) as Likes
 
 export type LikesFunctions = ContractFunctionNames<Likes>
 export function useLikesFunction(
   name: LikesFunctions,
   notificationTitle?: string,
 ) {
+  const ContractInstance = useContract<Likes>('Likes', Interface)
+
   const transaction = useContractFunction(ContractInstance, name, {
     transactionName: name,
   })
@@ -30,6 +31,8 @@ export function useLikesFunction(
 export type LikesMethodNames = ContractMethodNames<Likes>
 export type LikesParams = Params<Likes, LikesMethodNames>
 export function useLikesCall(method: LikesMethodNames, args: LikesParams) {
+  const ContractInstance = useContract<Likes>('Likes', Interface)
+
   return (
     (useCall({
       contract: ContractInstance,

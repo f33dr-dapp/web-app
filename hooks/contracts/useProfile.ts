@@ -4,20 +4,21 @@ import {
   ContractMethodNames,
   Params,
 } from '@usedapp/core/dist/esm/src/model/types'
-import { Contract, utils } from 'ethers'
+import { utils } from 'ethers'
 
+import { useContract } from '../../context/DAppProvider'
 import { Profile, Profile__factory } from '../../contracts'
-import manifest from '../../contracts/manifest.json'
 import useTransactionNotification from '../useTransactionNotification'
 
 const Interface = new utils.Interface(Profile__factory.abi)
-const ContractInstance = new Contract(manifest.Profile, Interface) as Profile
 
 export type ProfileFunctions = ContractFunctionNames<Profile>
 export function useProfileFunction(
   name: ProfileFunctions,
   notificationTitle?: string,
 ) {
+  const ContractInstance = useContract<Profile>('Profile', Interface)
+
   const transaction = useContractFunction(ContractInstance, name, {
     transactionName: name,
   })
@@ -33,6 +34,8 @@ export function useProfileCall(
   method: ProfileMethodNames,
   args: ProfileParams,
 ) {
+  const ContractInstance = useContract<Profile>('Profile', Interface)
+
   return (
     (useCall({
       contract: ContractInstance,
