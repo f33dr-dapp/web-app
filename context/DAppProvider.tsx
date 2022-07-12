@@ -10,6 +10,7 @@ import { Contract, utils } from 'ethers'
 
 import AlertContainer from '../components/Alerts/AlertContainer'
 import NetworkAlert from '../components/Alerts/NetworkAlert'
+import Layout from '../components/Layout/Layout'
 import Loader from '../components/Layout/Loader'
 import dappConfig from '../config/dappConfig'
 import { AddressBook, AddressBook__factory } from '../contracts'
@@ -82,7 +83,11 @@ function ContractsLoader(props: { children: any }) {
 
   const loading = !Minter || !Token || !Item || !Likes || !Profile
   if (loading) {
-    return <Loader />
+    return (
+      <Layout>
+        <Loader />
+      </Layout>
+    )
   }
 
   return (
@@ -107,7 +112,11 @@ function DAppProviderContent(props: { children: any }) {
   const ethers = useEthers()
 
   if (!ethers.chainId) {
-    return <NetworkAlert />
+    return (
+      <Layout>
+        <NetworkAlert />
+      </Layout>
+    )
   }
 
   return <ContractsLoader>{props.children}</ContractsLoader>

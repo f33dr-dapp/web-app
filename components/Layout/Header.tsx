@@ -7,7 +7,7 @@ import ConnectButton from '../Account/ConnectButton'
 import Logo from './Logo'
 
 export default function Header() {
-  const { account } = useEthers()
+  const { account, chainId } = useEthers()
 
   return (
     <>
@@ -25,9 +25,11 @@ export default function Header() {
             </Link>
           </Heading>
         </HStack>
-        <HStack spacing={4}>
-          {account ? <AccountMenu account={account} /> : <ConnectButton />}
-        </HStack>
+        {chainId ? (
+          <HStack spacing={4}>
+            {account ? <AccountMenu account={account} /> : <ConnectButton />}
+          </HStack>
+        ) : null}
       </HStack>
     </>
   )
